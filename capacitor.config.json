@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "awsApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
