@@ -1,20 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar color="primary">
+
+        <ion-title>
+            Ionic + AWS
+        </ion-title>
+
+        <ion-buttons>
+            <button ion-button icon-only (click)="edit = !edit">
+              <ion-icon name="unlock" *ngIf="edit"></ion-icon>
+              <ion-icon name="lock" *ngIf="!edit"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+    <h3 [hidden]="images.length !== 0" text-center>No Images found!</h3>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-list>
+        <ion-card *ngFor="let img of images; let i = index">
+            <img [src]="img.url">
+            <button ion-button full color="danger" [style.margin]="0" *ngIf="edit" (click)="deleteImage(i)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-card>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button ion-fab (click)="presentActionSheet()">
+       <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-fab>
 </ion-content>
